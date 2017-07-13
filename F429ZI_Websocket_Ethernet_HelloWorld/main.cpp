@@ -29,9 +29,9 @@
                       "<div style=\"margin:auto\">" "\r\n"
 #define HTTP_BOTTOM "</html>" "\r\n"
 
-#define IP        "192.168.137.25"
+#define IP        "192.168.1.2"
 #define NETMASK   "255.255.255.0"
-#define GATEWAY   "192.168.137.1"
+#define GATEWAY   "192.168.1.1"
 
 
 void ReadFlag_ISR(void);
@@ -53,7 +53,7 @@ int main()
     
     EthernetInterface eth;
     eth.set_network(IP, NETMASK, GATEWAY);
-    
+		
     eth.connect();
     printf("The target IP address is '%s'\r\n", eth.get_ip_address());
     
