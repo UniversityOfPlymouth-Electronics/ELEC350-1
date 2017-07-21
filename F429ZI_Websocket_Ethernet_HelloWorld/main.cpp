@@ -34,9 +34,11 @@
 #define GATEWAY   "192.168.1.1"
 
 
+
 void ReadFlag_ISR(void);
 bool ReadFlag=true;
-
+char WeatherData[3000]={0};
+		
 int main()
 {
     printf("Basic HTTP server example\r\n");
@@ -45,7 +47,7 @@ int main()
   
     //BMP180 Stuff here
     int T_Temp,T_Press, msTempNumber, msTempDecimal, msPressNumber, msPressDecimal;
-    char WeatherData[400]={0};
+
     BMP180_Initialise();
     
     Ticker ticktock;
@@ -90,6 +92,52 @@ int main()
   \r\n</div>\r\n</body>\r\n</html>\r\n\r\n"\
   ,HTTP_STATUS_LINE, HTTP_HEADER_FIELDS, HTTP_TITLE, HTTP_FORMAT_1\
   , msTempNumber , msTempDecimal, msPressNumber, msPressDecimal);
+					
+					
+						sptintf(WeatherData, "<!doctype html><html><head><title>Bootstrap Example</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>.vcenter {display: flex; align-items: center; margin-top: 40px; } </style><style> .blocky { background-color: #80c0ff; border-radius: 10px;	} </style></head><body>
+<div class="container-fluid"><div class="row vcenter"><div class="col-sm-3"></div><div class="col-sm-6"><p class="text-center">(c) 2017 University of Plymouth</p></div><div class="col-sm-3"></div></div>
+<div class="row vcenter"><div class="col-sm-4"></div><div class="col-sm-4 blocky"><h1 class="text-center">ELEC350/1</h1></div><div class="col-sm-4"></div></div><div class="row vcenter">
+<div class="col-sm-3"></div><div class="col-sm-3"><img class="img-responsive center-block" src="https://liveplymouthac-my.sharepoint.com/personal/nicholas_outram_plymouth_ac_uk/_layouts/15/guestaccess.aspx?docid=08547bac782314371bc5c4916b0eaea1d&authkey=AQrcBUKegX2XPX8u8Dd_okY" alt="thermometer" width="48" height="48">
+    	</div>
+    	<div class="col-sm-3">
+    		<h2 class="text-center">25.5 C</h2>
+    	</div>
+    	<div class="col-sm-3"></div>
+	</div>
+
+	<div class="row vcenter">
+    	<div class="col-sm-3"></div>
+    	<div class="col-sm-3">
+    		<img class="img-responsive center-block" src="https://liveplymouthac-my.sharepoint.com/personal/nicholas_outram_plymouth_ac_uk/_layouts/15/guestaccess.aspx?docid=02b3cd38de5504d71b10dc301ab0b8281&authkey=AcXMegXcpHQZENZeBKxSAV4" alt="barometer_2" width="96" height="96">
+    	</div>
+    	<div class="col-sm-3">
+    		<h2 class="text-center">1020 kPA</h2>
+    	</div>
+    	<div class="col-sm-3"></div>
+	</div>
+
+	<div class="row vcenter">
+    	<div class="col-sm-12">
+    		<img class="img-responsive center-block" src="https://liveplymouthac-my.sharepoint.com/personal/nicholas_outram_plymouth_ac_uk/_layouts/15/guestaccess.aspx?docid=0301b44bbf8dd4d6d97fe810f88dcdead&authkey=AQdrJ94ySuVT2kYXA1xgnB0" alt="refresh" width="48" height="48">
+    	</div>
+	</div>
+
+
+</div>
+<div class="alert alert-success alert-dismissable">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Note!</strong> Refresh the page to update the data.
+</div>
+
+
+
+</body>
+</html>
+");
+					
             ReadFlag=false;
             }
         printf("String Length/Error Number:%d\r\nWeather Data String is:%s\r\n",err,WeatherData);
