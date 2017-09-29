@@ -1,0 +1,6 @@
+[submodule "CStructures"]
+	path = CStructures
+	url = https://github.com/UniversityOfPlymouth-Electronics/CStructures
+[submodule "CPPClasses"]
+	path = CPPClasses
+	url = https://github.com/UniversityOfPlymouth-Electronics/CPPClasses
