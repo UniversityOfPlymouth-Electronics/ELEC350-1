@@ -7,3 +7,6 @@
 [submodule "Complex"]
 	path = Complex
 	url = https://github.com/UniversityOfPlymouth-Electronics/Complex
+[submodule "stm32-gpio"]
+	path = stm32-gpio
+	url = https://github.com/UniversityOfPlymouth-Electronics/stm32-gpio.git
